@@ -36,7 +36,7 @@ const Product = () => {
   },[search])
 
  
-
+//pagination
  const indexOfLastItem = currentPage * itemsPerPage
  const indexOfFirstItem = indexOfLastItem - itemsPerPage
  const currentItems = products.slice(indexOfFirstItem,indexOfLastItem)
@@ -49,9 +49,9 @@ const Product = () => {
  }
  const goDetailProduct = (productId,sku)=>{
   setDetails({productId,sku})
-  //console.log({productId,sku})
+  
 }
-  //console.log(currentItems)
+  
   return (  
     <>
      <div className='products-container'>

@@ -38,7 +38,6 @@ const CheckOut = () => {
                <h4>total :</h4>
                <h4>${ Number.parseFloat(total).toFixed(2)}</h4>
            </div>
-           <button className="deleteAll">delete All</button>
            <div className="footer-btn-container">
                <button>pay with mastercard <FaCcMastercard className="footer-icon"/> </button>
                <button>pay with paypal <FaCcPaypal className="footer-icon paypal"/>  </button>

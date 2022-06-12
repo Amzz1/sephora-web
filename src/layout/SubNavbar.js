@@ -3,9 +3,6 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import { useGlobalContext } from '../context';
 
-
-
-
 const SubNavbar = () => {
   const [data,setData] = useState([])
    const {setCategoryId,categoryId} = useGlobalContext()
@@ -23,9 +20,7 @@ const SubNavbar = () => {
   const fetchThing=()=>{
   axios.request(options).then(function (response) {
     const {rootCategories} = response.data
-    setData(rootCategories);
-    
-    
+    setData(rootCategories); 
   }).catch(function (error) {
     console.error(error);
   });
@@ -33,7 +28,6 @@ const SubNavbar = () => {
 
       useEffect(()=>{
         fetchThing()
-      console.log('yyy')
       },[])
    
   return (
@@ -42,13 +36,16 @@ const SubNavbar = () => {
        {data.map((item,index)=>{
  
          return (
-           <>
-           <Link to={`/category/${item.categoryId}`}>
-             <a className='nav-links' onClick={()=>setCategoryId(item.categoryId)} key={index}>{item.displayName}</a>
+          //  <>
+          //  <Link key={item.categoryId} to={`/category/${item.categoryId}`}>
+          //    <a className='nav-links' onClick={()=>setCategoryId(item.categoryId)} key={index} >{item.displayName}</a>
+          //  </Link>
+           <Link className='nav-links' onClick={()=>setCategoryId(item.categoryId)} key={item.categoryId} to={`/category/${item.categoryId}`}>
+             {item.displayName}
            </Link>
           
-           <br/>
-           </>
+      
+          //  </>
          )
        })}
     </nav>
@@ -56,30 +53,18 @@ const SubNavbar = () => {
     {data.map((item,index)=>{
  
          return (
-   <>
-   <Link to={`/category/${item.categoryId}`}>
-     <button className='btn-sub-nav' onClick={()=>setCategoryId(item.categoryId)} key={index}>{item.displayName}</button>
+  
+  //  <Link key={item.categoryId} to={`/category/${item.categoryId}`}>
+  //    <button className='btn-sub-nav' onClick={()=>setCategoryId(item.categoryId)} key={index}>{item.displayName}</button>
+  //  </Link>
+   <Link className='btn-sub-nav' onClick={()=>setCategoryId(item.categoryId)} key={item.categoryId} to={`/category/${item.categoryId}`}>
+     {item.displayName}
    </Link>
   
-   <br/>
-   </>
+  
  )
 })}
-    {/* </nav>
-     <nav className='sub-nav-sm'>
-       <button>Mbkeup</button>
-       <button>CleonnSephoron</button>
-       <button>Skincre</button>
-       <button>Hbnir</button>
-       <button>Tools & Brushes</button>
-       <button>Frbuttongrbuttonnce</button>
-       <button>Bnth & Body</button>
-       <button> Gifts</button>
-       <button>Men</button>
-       <button>Mini size</button>
-     </nav>
-
-    </> */}
+  
 </nav>
 </>
 

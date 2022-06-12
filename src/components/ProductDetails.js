@@ -27,7 +27,7 @@ const ProductDetails = () => {
         console.error(error);
     });
   },[])
-  const {details,setAmount,amount,setCheckout,checkout} = useGlobalContext()
+  const {details,setAmount,setCheckout} = useGlobalContext()
   const {productId,sku} = details
   const [data,setData] = useState({})
   const [brand,setBrand] = useState({})
@@ -66,7 +66,7 @@ const ProductDetails = () => {
            <div className='short-details'>
              <h6>{brand.displayName}</h6>
              <h5>{data.displayName}</h5>
-           <span className='as'>  <Rating name="read-only" value={data.rating} readOnly /> ({data.reviews})</span>
+           <span className='as'>  <Rating name="read-only" value={Number(data.rating)} readOnly /> ({data.reviews})</span>
              <p>{currentSku.listPrice}</p>
              <p>Size: {currentSku.size}</p>
              <form className='delivery' onSubmit={handleSubmit}>

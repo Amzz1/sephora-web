@@ -1,6 +1,5 @@
 import { useContext,useState,useEffect } from "react";
 import { createContext } from "react";
-
 const AppContext = createContext()
 
 const AppProvider = ({children}) =>{
@@ -11,25 +10,17 @@ const AppProvider = ({children}) =>{
   const [checkout,setCheckout] = useState(JSON.parse(localStorage.getItem("cart")) || [])
   const total = checkout.map(item=>Number(item.price)*Number(item.amount)).reduce((a,b)=>a+b,0)
   const quantity =checkout.map(item=>Number(item.amount)).reduce((a,b)=>a+b,0)
-  const [deleteAll,setDeleteAll]= useState(false)
 useEffect(()=>{
   localStorage.setItem('cart',JSON.stringify(checkout))
  
 },[checkout])
 useEffect(()=>{
   sessionStorage.setItem('search',JSON.stringify(searchTerm))
-})
+},[searchTerm])
 useEffect(()=>{
  localStorage.setItem('amount',JSON.stringify(amount))
 },[amount])
- useEffect(()=>{
-   if(deleteAll){
-  localStorage.removeItem('cart')
-  localStorage.removeItem("amount");
-   }
-   setDeleteAll(false)
-   console.log('fuck off')
- },[])
+
 return (
   <AppContext.Provider
      value={{
@@ -45,7 +36,6 @@ return (
        setCheckout,
        total,
        quantity,
-       setDeleteAll
 
      }}
   >

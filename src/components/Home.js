@@ -31,7 +31,7 @@ const Home = () => {
              </div>
     </div>
     <div className='just-drop'>
-      <span><h2>Just Drop</h2>          <Link to='/category/cat150006' onClick={()=>setCategoryId('cat150006')} className='show-more'>show more</Link></span>
+      <span><h2>Just Drop</h2> <Link to='/category/cat150006' onClick={()=>setCategoryId('cat150006')} className='show-more'>show more</Link></span>
       
       <div className='demo'>
        <Link to='/category/cat150006' onClick={()=>setCategoryId('cat150006')}  className='link '> <IoIosArrowBack className='icon'/></Link>
